@@ -16,8 +16,34 @@
 <div id='map'></div>
 
 <script>
-    var map = L.map('map', { center: [51.163375, 10.447683], zoom: 8 });
+    var southWest = L.latLng(46.5,5.5);
+    var northEast = L.latLng(55.5,15.5);
 
+    var map = L.map('map', {
+    center: [51.163375, 10.447683],
+    zoom: 6,
+    zoomControl:false,
+    maxBounds: L.latLngBounds(southWest, northEast),
+     });
+
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.setMaxBounds([
+    [46.5,5.5]
+    [55.5,15.5]
+    ]);
+
+    var popup = L.popup();
+    function onMapClick(e){
+
+    popup
+        .setLatLng(e.latlng)
+        .setContent("Dein Tipp")
+        .openOn(map);
+    }
+
+    map.on('click', onMapClick);
 
     function clickCenter(e) {
     map.setView(e.target.getLatLng(),map.getZoom());
