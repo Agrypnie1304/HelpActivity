@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
@@ -15,40 +16,95 @@
         mapbox:mapbox_styleUrl="mapbox://styles/syno/cjb27u3h1s8ls2sqvi4ua7hs9"
         mapbox:mapbox_cameraZoom="5"
         mapbox:mapbox_cameraZoomMin="5"
-        mapbox:mapbox_cameraZoomMax="8"
+        mapbox:mapbox_cameraZoomMax="7"
         mapbox:mapbox_uiZoomControls="false"
         mapbox:mapbox_uiRotateGestures="false"
         mapbox:mapbox_uiTiltGestures="false"
 
-        />
+        >
+
+    </com.mapbox.mapboxsdk.maps.MapView>
 
     <View
-        android:id="@+id/background"
-        android:layout_width="175dp"
-        android:layout_height="30dp"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/backWoLiegtStadt"
+        android:layout_marginLeft="0dp"
+        android:layout_alignRight="@+id/stadt"
+        android:layout_width="200dp"
+        android:layout_height="25dp"
         android:layout_alignTop="@+id/woLiegt"
-        android:background="#FFF"
+        android:background="#ffffff"
+        android:visibility="visible" />
+
+    <View
+        android:id="@+id/backScore"
+        android:layout_toLeftOf="@+id/stadt"
+        android:layout_toStartOf="@+id/stadt"
+        android:layout_alignRight="@+id/score"
+        android:layout_marginLeft="4dp"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/score"
+        android:background="#ffffff"
         android:visibility="visible" />
 
     <TextView
         android:id="@+id/woLiegt"
-        android:layout_width="75dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="107dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="2dp"
         android:text="Wo liegt:"
-        android:textSize="19dp"
+        android:textSize="22dp"
         android:visibility="visible" />
 
     <TextView
         android:id="@+id/stadt"
-        android:layout_width="95dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="185dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/woLiegt"
+        android:layout_toEndOf="@+id/woLiegt"
+        android:layout_toRightOf="@+id/woLiegt"
+        android:layout_marginLeft="4dp"
         android:text="Stadt"
-        android:textSize="19dp"
+        android:textSize="22dp"
         android:visibility="visible" />
 
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:layout_toRightOf="@id/score"
+        android:layout_marginLeft="10dp"
+        android:text="bestätige" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/confirm"
+        android:layout_toRightOf="@+id/confirm"
+        android:text="weiter" />
+
+    <Button
+        android:id="@+id/end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/confirm"
+        android:layout_toRightOf="@+id/next"
+        android:text="Beenden" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/confirm"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="8dp"
+        android:text="Score: 0"
+        android:textSize="20dp" />
+
 </RelativeLayout>
+
+<!-- um unten zu verschieben, reicht es den Bestätige Button zu verändern -->
