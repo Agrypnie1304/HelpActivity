@@ -3,9 +3,12 @@ package de.gidf.woliegtwas;
 import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
@@ -19,6 +22,53 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 public class MapActivity extends AppCompatActivity {
 
     private MapView mapView;
+
+    double distance;
+    int i =0;
+    double p =0;
+
+    public void confirm (View view){
+
+        // berechne distanz und runde den score
+        distance = berechneDistanz(p);
+        int punkte = (int) Math.round(distance);
+        ((TextView) findViewById(R.id.score)).setText("Score: " + punkte);
+
+    }
+
+    private void next(View View){
+        /*
+        nehme neue stadt
+         */
+        ((TextView) findViewById(R.id.stadt)).setText(""); //hier entsprechende Stadt einfügen
+
+        i = i+1;
+        //wenn 10 mal confirm gedrückt wurde, soll das passieren:
+
+        Intent goToHighscoreNext = new Intent (this, Highscore_Activity.class);
+        startActivity(goToHighscoreNext);
+    }
+
+    public void end (View view){
+
+        //wenn 10 mal confirm gedrückt wurde, soll das passieren:
+
+        Intent goToHighscore = new Intent (this, Highscore_Activity.class);
+        startActivity(goToHighscore);
+        //übergebe noch den score
+
+        // sonst:
+        Intent goToMainEnd = new Intent (this, MainActivity.class);
+        startActivity(goToMainEnd);
+    }
+
+    private double berechneDistanz(double p){
+        /*
+        berechne distanz
+         */
+        return distance;
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
