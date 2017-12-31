@@ -3,4 +3,7 @@
     <string name="highscore">Highscores</string>
     <string name="back">Zurück</string>
     <string name="share">Teilen</string>
+    <string name="button_Play">Play!</string>
+    <string name="button_Help">Help!</string>
+    <string name="button_HighScore">High Score</string>
 </resources>
