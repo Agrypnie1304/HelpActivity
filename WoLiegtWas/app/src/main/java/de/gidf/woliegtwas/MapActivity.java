@@ -23,50 +23,73 @@ public class MapActivity extends AppCompatActivity {
 
     private MapView mapView;
 
+    int i =1;
+    int j =1;
     double distance;
-    int i =0;
-    double p =0;
+    int punktausgabe;
+    int punkte;
+
+
+    //hier muss noch ein ablauf hin, dass die buttons nur nacheinander gedrückt werden können...
 
     public void confirm (View view){
 
-        // berechne distanz und runde den score
-        distance = berechneDistanz(p);
-        int punkte = (int) Math.round(distance);
-        ((TextView) findViewById(R.id.score)).setText("Score: " + punkte);
-
+        punktausgabe = berechnePunkte();
+        ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe);
     }
 
-    private void next(View View){
+    public void next (View view){
         /*
         nehme neue stadt
          */
-        ((TextView) findViewById(R.id.stadt)).setText(""); //hier entsprechende Stadt einfügen
+        ((TextView) findViewById(R.id.stadt)).setText("hier muss ne stadt hin"); //hier entsprechende Stadt einfügen
 
+        //wenn 10 mal weiter gedrückt wurde, soll das passieren:
+        if (i == 10) {
+            Intent goToHighscoreNext = new Intent (this, Highscore_Activity.class);
+            startActivity(goToHighscoreNext);
+        }
         i = i+1;
-        //wenn 10 mal confirm gedrückt wurde, soll das passieren:
-
-        Intent goToHighscoreNext = new Intent (this, Highscore_Activity.class);
-        startActivity(goToHighscoreNext);
     }
 
     public void end (View view){
 
         //wenn 10 mal confirm gedrückt wurde, soll das passieren:
 
-        Intent goToHighscore = new Intent (this, Highscore_Activity.class);
-        startActivity(goToHighscore);
-        //übergebe noch den score
+        if (j == 10) {
 
-        // sonst:
-        Intent goToMainEnd = new Intent (this, MainActivity.class);
-        startActivity(goToMainEnd);
+            Intent goToHighscore = new Intent(this, Highscore_Activity.class);
+            goToHighscore.putExtra(getPackageName(), punkte); //hier werden punkte an highscore übergeben
+            startActivity(goToHighscore);
+            //übergebe noch den score
+        }else{
+            // sonst:
+            Intent goToMainEnd = new Intent (this, MainActivity.class);
+            startActivity(goToMainEnd);
+        }
     }
 
-    private double berechneDistanz(double p){
+    private int berechnePunkte (){
         /*
         berechne distanz
          */
-        return distance;
+        double wert = 10000;
+        distance = wert/1000; //Distanz in km
+
+        if (distance>200){
+            punkte = punkte;
+        } else if (distance >150){
+            punkte = punkte + 10;
+        }else if(distance>100){
+            punkte = punkte + 25;
+        }else if(distance > 50){
+            punkte = punkte + 50;
+        } else if(distance >25){
+            punkte = punkte + 75;
+        }else{
+            punkte = punkte + 100;
+        }
+        return punkte;
     };
 
 
