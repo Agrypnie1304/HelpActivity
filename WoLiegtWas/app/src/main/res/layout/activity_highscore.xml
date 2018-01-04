@@ -37,9 +37,9 @@
             android:id="@+id/ButtonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textHighList"
-            android:layout_toLeftOf="@id/centerPoint"
-
+            android:layout_below="@+id/textHighList"
+            android:layout_toLeftOf="@+id/centerPoint"
+            android:layout_toStartOf="@+id/centerPoint"
             android:onClick="onClickBackToMain"
             android:text="@string/back"
             android:textAllCaps="false"
@@ -60,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textHighList"
             android:layout_toRightOf="@id/centerPoint"
+            android:onClick="onClickShareIt"
             android:text="@string/share"
             android:textColor="@color/black" />
 

@@ -52,6 +52,19 @@ public class Highscore_Activity extends AppCompatActivity {
                 new Intent(this, MainActivity.class));
     }
 
+    public void onClickShareIt(View view) {
+        //sharing implementation here
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        //Headline
+        String shareBody = "Your body here";
+        //Highscoretext
+        String shareSub = "Your Subject here";
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Teilen via"));
+    }
+
 //    private void setHighscore(){
 //        //set Highscore
 //        int exScore = getScore();
