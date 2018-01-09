@@ -7,11 +7,11 @@ package de.gidf.woliegtwas;
 public class Score implements Comparable<Score>{
 
     //score date and number
-    private String scoreDate;
+    private String scoreName;
     public int scoreNum;
 
-    public Score(String date, int num){
-        this.scoreDate = date;
+    public Score(String name, int num){
+        this.scoreName = name;
         this.scoreNum = num;
     }
 
@@ -25,6 +25,6 @@ public class Score implements Comparable<Score>{
 
     //return score display text
     public String getScoreText(){
-        return scoreDate + " - " + scoreNum;
+        return scoreName + " - " + scoreNum;
     }
 }

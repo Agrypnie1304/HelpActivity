@@ -46,8 +46,9 @@ public class MapActivity extends AppCompatActivity {
 
         //wenn 10 mal weiter gedrückt wurde, soll das passieren:
         if (i == 10) {
-            Intent goToHighscoreNext = new Intent (this, Highscore_Activity.class);
-            startActivity(goToHighscoreNext);
+            Intent popupHighscore = new Intent(this, PopUpHighscore.class);
+            popupHighscore.putExtra("Score", punkte);
+            startActivity(popupHighscore);
         }
         i = i+1;
     }

@@ -31,15 +31,14 @@
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:text="hier könnte dein Highscore stehen" />
+            android:text="" />
 
         <Button
-            android:id="@+id/ButtonBack"
+            android:id="@+id/BtnHighBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textHighList"
             android:layout_toLeftOf="@+id/centerPoint"
-            android:layout_toStartOf="@+id/centerPoint"
             android:onClick="onClickBackToMain"
             android:text="@string/back"
             android:textAllCaps="false"
@@ -55,7 +54,7 @@
             android:text=""/>
 
         <Button
-            android:id="@+id/ButtonShare"
+            android:id="@+id/BtnHighShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textHighList"

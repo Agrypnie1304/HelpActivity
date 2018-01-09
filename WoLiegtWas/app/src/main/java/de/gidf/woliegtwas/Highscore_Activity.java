@@ -44,7 +44,7 @@ public class Highscore_Activity extends AppCompatActivity {
         scoreView.setText(scoreBuild.toString());
     }
 
-    /*#
+    /*
     go back to main-page
      */
     public void onClickBackToMain(View view){
@@ -52,6 +52,12 @@ public class Highscore_Activity extends AppCompatActivity {
                 new Intent(this, MainActivity.class));
     }
 
+    /*
+    share the scores
+     */
+    /*
+    To-Do: Body und Sub durch Highscore ersetzen
+     */
     public void onClickShareIt(View view) {
         //sharing implementation here
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -65,71 +71,5 @@ public class Highscore_Activity extends AppCompatActivity {
         startActivity(Intent.createChooser(sharingIntent, "Teilen via"));
     }
 
-//    private void setHighscore(){
-//        //set Highscore
-//        int exScore = getScore();
-//
-//        if(exScore > 0){
-//            //we have a valid score
-//            SharedPreferences.Editor scoreEditor = highPrefs.edit();
-//            DateFormat dateForm = new SimpleDateFormat("dd MMMM yyyy");
-//            String dateOutput = dateForm.format(new Date());
-//            //get existing scores
-//            String scores = highPrefs.getString("highscore", "");
-//
-//            //check for scores
-//            if(scores.length() > 0){
-//                //we have existing scores
-//                List<Score> scoreStrings = new ArrayList<Score>();
-//                //split scores
-//                String[] exScores = scores.split("\\|");
-//                //add score object for each
-//                for(String eSc : exScores){
-//                    String[] parts = eSc.split(" - ");
-//                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
-//                }
-//
-//                //new score
-//                Score newScore = new Score(dateOutput, exScore);
-//                scoreStrings.add(newScore);
-//                //sort
-//                Collections.sort(scoreStrings);
-//                //get top ten
-//                StringBuilder scoreBuild = new StringBuilder("");
-//                for(int s=0; s < scoreStrings.size(); s++){
-//                    if(s >= 10) {
-//                        break;
-//                    }
-//                    if(s > 0 ){
-//                        scoreBuild.append("|");
-//                    }
-//                    scoreBuild.append(scoreStrings.get(s).getScoreText());
-//                }
-//                //write to prefs
-//                scoreEditor.putString("highscore", scoreBuild.toString());
-//                scoreEditor.commit();
-//
-//            } else {
-//                // no exisiting scores
-//                scoreEditor.putString("highscore", "" + dateOutput + " - " + exScore);
-//                scoreEditor.commit();
-//            }
-//        }
-//    }
-//
-//    protected void onDestroy(){
-//        setHighscore();
-//        super.onDestroy();
-//    }
-//
-//
-//    //save instance state
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState){
-//        //save state
-//        int exScore = getScore();
-//        savedInstanceState.putInt("score", exScore);
-//        //superclass method
-//        super.onSaveInstanceState(savedInstanceState);
-//    }
+
 }
