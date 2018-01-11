@@ -29,7 +29,7 @@
         android:id="@+id/backWoLiegtStadt"
         android:layout_marginLeft="0dp"
         android:layout_alignRight="@+id/stadt"
-        android:layout_width="200dp"
+        android:layout_width="2000dp"
         android:layout_height="25dp"
         android:layout_alignTop="@+id/woLiegt"
         android:background="#ffffff"
@@ -41,7 +41,7 @@
         android:layout_toStartOf="@+id/stadt"
         android:layout_alignRight="@+id/score"
         android:layout_marginLeft="4dp"
-        android:layout_width="100dp"
+        android:layout_width="1000dp"
         android:layout_height="25dp"
         android:layout_alignTop="@+id/score"
         android:background="#ffffff"
@@ -76,8 +76,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
         android:layout_toRightOf="@id/score"
-        android:layout_marginLeft="10dp"
-        android:text="bestätige" />
+        android:layout_marginLeft="8dp"
+        android:text="bestätige"
+        android:onClick="confirm"/>
 
     <Button
         android:id="@+id/next"
@@ -85,15 +86,18 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/confirm"
         android:layout_toRightOf="@+id/confirm"
-        android:text="weiter" />
+        android:text="weiter"
+        android:onClick="next"/>
 
     <Button
         android:id="@+id/end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/confirm"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/confirm"
         android:layout_toRightOf="@+id/next"
-        android:text="Beenden" />
+        android:text="Beenden"
+        android:textSize="8dp"
+        android:onClick="end"/>
 
     <TextView
         android:id="@+id/score"

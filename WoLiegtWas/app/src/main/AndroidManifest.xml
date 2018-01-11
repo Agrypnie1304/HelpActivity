@@ -34,6 +34,9 @@
             android:label="Hilfe">
         </activity>
 
+        <activity android:name=".PopUpHighscore"
+            android:theme="@style/AppTheme.CustomTheme"> </activity>
+
     </application>
 
 </manifest>
