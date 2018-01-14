@@ -1,12 +1,13 @@
 package de.gidf.woliegtwas;
 
 /**
- * Created by fabi on 03.01.2018.
+ * class Score
+ * new class for highscore
  */
 
 public class Score implements Comparable<Score>{
 
-    //score date and number
+    // score name and number
     private String scoreName;
     public int scoreNum;
 
@@ -27,4 +28,5 @@ public class Score implements Comparable<Score>{
     public String getScoreText(){
         return scoreName + " - " + scoreNum;
     }
+
 }
