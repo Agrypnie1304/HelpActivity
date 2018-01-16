@@ -65,7 +65,7 @@
         android:layout_toEndOf="@+id/woLiegt"
         android:layout_toRightOf="@+id/woLiegt"
         android:layout_marginLeft="4dp"
-        android:text="Stadt"
+        android:text=""
         android:textSize="22dp"
         android:visibility="visible" />
 
@@ -77,27 +77,20 @@
         android:layout_marginBottom="24dp"
         android:layout_toRightOf="@id/score"
         android:layout_marginLeft="8dp"
-        android:text="bestätige"
+        android:text="Start!"
         android:onClick="confirm"/>
-
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/confirm"
-        android:layout_toRightOf="@+id/confirm"
-        android:text="weiter"
-        android:onClick="next"/>
 
     <Button
         android:id="@+id/end"
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_alignBottom="@+id/confirm"
-        android:layout_toRightOf="@+id/next"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:onClick="end"
         android:text="Beenden"
-        android:textSize="8dp"
-        android:onClick="end"/>
+        android:textSize="8dp" />
 
     <TextView
         android:id="@+id/score"
@@ -110,5 +103,3 @@
         android:textSize="20dp" />
 
 </RelativeLayout>
-
-<!-- um unten zu verschieben, reicht es den Bestätige Button zu verändern -->
