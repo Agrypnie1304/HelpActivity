@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+            
+    <TextView
+        android:id="@+id/textPopupHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Head"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    
+    <TextView
+        android:id="@+id/textPopupScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textPopupHead"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/red"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:text="Score"/>
+
+
+    <EditText
+        android:id="@+id/EditPopupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textPopupScore"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:hint="Name eingeben" />
+
+    <Button
+        android:id="@+id/BtnPopupBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditPopupName"
+        android:layout_toLeftOf="@id/centerPoint"
+        android:onClick="onClickBackToMain"
+        android:text="@string/back"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/centerPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditPopupName"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text=""/>
+
+    <Button
+        android:id="@+id/BtnPopupHigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditPopupName"
+        android:layout_toRightOf="@id/centerPoint"
+        android:onClick="onClickAddHighscore"
+        android:text="@string/highscoreAdd"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/BtnPopupPlayAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditPopupName"
+        android:layout_toRightOf="@id/centerPoint"
+        android:onClick="onClickPlayAgain"
+        android:text="@string/button_Play"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textPopupError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/centerPoint"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:text="Fehler: Bitte Namen eingeben!"
+        android:visibility="invisible"/>
+    
+    
+</RelativeLayout>

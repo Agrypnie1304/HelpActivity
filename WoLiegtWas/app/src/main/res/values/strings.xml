@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WoLiegtWas</string>
     <string name="highscore">Highscores</string>
+    <string name="highscoreAdd">Highscore eintragen</string>
     <string name="back">Zurück</string>
     <string name="share">Teilen</string>
     <string name="button_Play">Play!</string>
