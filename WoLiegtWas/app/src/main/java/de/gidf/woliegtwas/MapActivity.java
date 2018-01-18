@@ -35,22 +35,39 @@ public class MapActivity extends AppCompatActivity {
     LatLng markerPos;
 
 
-    Stadt Berlin = new Stadt("Berlin", new LatLng(52.520007,13.404954));
-    Stadt Bremen = new Stadt("Bremen", new LatLng(53.0792962, 8.8016937));
-    Stadt Dresden = new Stadt("Dresden", new LatLng(51.0504088, 13.7372621));
-    Stadt Duesseldorf = new Stadt("Düsseldorf", new LatLng(51.2277411, 6.7734556));
-    Stadt Erfurt = new Stadt("Erfurt", new LatLng(50.9847679,11.0298799));
-    Stadt Hamburg = new Stadt("Hamburg", new LatLng(53.551085,9.993682));
-    Stadt Hannover = new Stadt("Hannover", new LatLng(52.3758916,9.7320104));
-    Stadt Kiel = new Stadt("Kiel", new LatLng(54.3232927,10.1227652));
-    Stadt Magdeburg = new Stadt("Magdeburg", new LatLng(52.1205333,11.6276237));
-    Stadt Mainz = new Stadt("Mainz", new LatLng(49.9928617,8.2472526));
-    Stadt Muenchen = new Stadt("München", new LatLng(48.135125, 11.581981));
-    Stadt Potsdam = new Stadt("Potsdam", new LatLng(52.390569,13.064473));
-    Stadt Saarbruecken = new Stadt("Saarbrücken", new LatLng(49.2401572,6.9969327));
-    Stadt Schwerin = new Stadt("Schwerin", new LatLng(53.6355022,11.4012499));
-    Stadt Stuttgard = new Stadt("Stuttgard", new LatLng(48.775846,9.182932));
-    Stadt Wiesbaden = new Stadt("Wiesbaden", new LatLng(50.0782184, 8.2397608));
+    //Stadt Berlin = new Stadt("Berlin", new LatLng(52.520007,13.404954));
+    //Stadt Bremen = new Stadt("Bremen", new LatLng(53.0792962, 8.8016937));
+    //Stadt Dresden = new Stadt("Dresden", new LatLng(51.0504088, 13.7372621));
+    //Stadt Duesseldorf = new Stadt("Düsseldorf", new LatLng(51.2277411, 6.7734556));
+    //Stadt Erfurt = new Stadt("Erfurt", new LatLng(50.9847679,11.0298799));
+    //Stadt Hamburg = new Stadt("Hamburg", new LatLng(53.551085,9.993682));
+    //Stadt Hannover = new Stadt("Hannover", new LatLng(52.3758916,9.7320104));
+    //Stadt Kiel = new Stadt("Kiel", new LatLng(54.3232927,10.1227652));
+    //Stadt Magdeburg = new Stadt("Magdeburg", new LatLng(52.1205333,11.6276237));
+    //Stadt Mainz = new Stadt("Mainz", new LatLng(49.9928617,8.2472526));
+    //Stadt Muenchen = new Stadt("München", new LatLng(48.135125, 11.581981));
+    //Stadt Potsdam = new Stadt("Potsdam", new LatLng(52.390569,13.064473));
+    //Stadt Saarbruecken = new Stadt("Saarbrücken", new LatLng(49.2401572,6.9969327));
+    //Stadt Schwerin = new Stadt("Schwerin", new LatLng(53.6355022,11.4012499));
+    //Stadt Stuttgard = new Stadt("Stuttgard", new LatLng(48.775846,9.182932));
+    //Stadt Wiesbaden = new Stadt("Wiesbaden", new LatLng(50.0782184, 8.2397608));
+
+    Stadt Berlin = new Stadt("Berlin",52.520007,13.404954);
+    Stadt Bremen = new Stadt("Bremen",53.0792962, 8.8016937);
+    Stadt Dresden = new Stadt("Dresden",51.0504088, 13.7372621);
+    Stadt Duesseldorf = new Stadt("Düsseldorf", 51.2277411, 6.7734556);
+    Stadt Erfurt = new Stadt("Erfurt",50.9847679,11.0298799);
+    Stadt Hamburg = new Stadt("Hamburg", 53.551085,9.993682);
+    Stadt Hannover = new Stadt("Hannover", 52.3758916,9.7320104);
+    Stadt Kiel = new Stadt("Kiel", 54.3232927,10.1227652);
+    Stadt Magdeburg = new Stadt("Magdeburg", 52.1205333,11.6276237);
+    Stadt Mainz = new Stadt("Mainz",49.9928617,8.2472526);
+    Stadt Muenchen = new Stadt("München",  48.135125, 11.581981);
+    Stadt Potsdam = new Stadt("Potsdam", 52.390569,13.064473);
+    Stadt Saarbruecken = new Stadt("Saarbrücken", 49.2401572,6.9969327);
+    Stadt Schwerin = new Stadt("Schwerin", 53.6355022,11.4012499);
+    Stadt Stuttgard = new Stadt("Stuttgard", 48.775846,9.182932);
+    Stadt Wiesbaden = new Stadt("Wiesbaden", 50.0782184, 8.2397608);
 
     Stadt[] stadtListRandom = new Stadt[]{
                     Berlin,
@@ -87,9 +104,7 @@ public class MapActivity extends AppCompatActivity {
 
             button.setText("weiter");
 
-            ((TextView)findViewById(R.id.check)).setText("Koordinaten:"+ markerPos.getLatitude()+ " " + markerPos.getLongitude()+ "Stadt: " + stadtListRandom[l].name + " Koords " + stadtListRandom[l].koordinaten.getLatitude()+" " + stadtListRandom[l].koordinaten.getLongitude() );
-
-            punktausgabe = berechnePunkte(stadtListRandom[l].koordinaten);
+            punktausgabe = berechnePunkte(stadtListRandom[l].latitude, stadtListRandom[l].longitude);
             ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe);
             l=l+1;
 
@@ -127,27 +142,27 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
-    private int berechnePunkte(LatLng koordinaten){
+    private int berechnePunkte(double lati, double longi){
 
-        double lat1 = koordinaten.getLatitude();
-        double long1= koordinaten.getLongitude();
+        double lat1 = lati;
+        double long1= longi;
         double lat2 = markerPos.getLatitude();
         double long2= markerPos.getLongitude();
 
         distanceMeter = distance(lat1, lat2, long1, long2);
         distanceKM = distanceMeter/1000; //Distanz in km
 
-        if (distanceKM>200){
+        if (distanceKM>100){
             punkte = punkte;
-        } else if (distanceKM >150){
+        } else if (distanceKM >80){ // 80 bis 100 km 10 pkt
             punkte = punkte + 10;
-        }else if(distanceKM>100){
+        }else if(distanceKM>60){    // 60 bis 80 km 25 pkt
             punkte = punkte + 25;
-        }else if(distanceKM > 50){
+        }else if(distanceKM > 40){  // 40 bis 60 km 50 pkt
             punkte = punkte + 50;
-        } else if(distanceKM >25){
+        } else if(distanceKM >25){  // 25 bis 40 km 75 pkt
             punkte = punkte + 75;
-        }else{
+        }else{                      //weniger als 25 100 pkt
             punkte = punkte + 100;
         }
         return punkte;
