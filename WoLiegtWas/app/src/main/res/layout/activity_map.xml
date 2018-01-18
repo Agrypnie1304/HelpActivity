@@ -58,6 +58,14 @@
         android:visibility="visible" />
 
     <TextView
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="TextView" />
+
+    <TextView
         android:id="@+id/stadt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -8,11 +8,13 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 
 public class Stadt {
     String name;
-    LatLng koordinaten;
+    double latitude;
+    double longitude;
 
-    Stadt(String name, LatLng koordinaten){
+    Stadt(String name, double latitude, double longitude){
         this.name = name;
-        this.koordinaten = new LatLng();
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
 }
