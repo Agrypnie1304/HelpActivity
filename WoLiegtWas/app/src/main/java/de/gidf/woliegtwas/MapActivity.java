@@ -28,9 +28,11 @@ public class MapActivity extends AppCompatActivity {
     int i =1;
     int j =2;
     int k=1, l=0, m=0;
-    double distance;
+    double distanceKM;
+    double distanceMeter;
     int punktausgabe;
     int punkte;
+    LatLng markerPos;
 
 
     Stadt Berlin = new Stadt("Berlin", new LatLng(52.520007,13.404954));
@@ -87,7 +89,7 @@ public class MapActivity extends AppCompatActivity {
 
 
             punktausgabe = berechnePunkte(stadtListRandom[l].koordinaten);
-            ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe);
+            ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe +"Koo" + markerPos.getLatitude());
             l=l+1;
 
         }else {
@@ -123,25 +125,26 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
+
     private int berechnePunkte(LatLng koordinaten){
 
-
-        double wert = 10000;
         double lat1 = koordinaten.getLatitude();
         double long1= koordinaten.getLongitude();
-        //double lat2 = tipp.getLatitude();
+        double lat2 = markerPos.getLatitude();
+        double long2= markerPos.getLongitude();
 
-        distance = wert/1000; //Distanz in km
+        distanceMeter = distance(lat1, lat2, long1, long2);
+        distanceKM = distanceMeter/1000; //Distanz in km
 
-        if (distance>200){
+        if (distanceKM>200){
             punkte = punkte;
-        } else if (distance >150){
+        } else if (distanceKM >150){
             punkte = punkte + 10;
-        }else if(distance>100){
+        }else if(distanceKM>100){
             punkte = punkte + 25;
-        }else if(distance > 50){
+        }else if(distanceKM > 50){
             punkte = punkte + 50;
-        } else if(distance >25){
+        } else if(distanceKM >25){
             punkte = punkte + 75;
         }else{
             punkte = punkte + 100;
@@ -149,22 +152,20 @@ public class MapActivity extends AppCompatActivity {
         return punkte;
     };
 
-    public static double distance(double lat1, double lat2, double lon1,
-                                  double lon2, double el1, double el2) {
+    public static double distance(double lat1, double lat2, double long1,
+                                  double long2) {
 
-        final int R = 6371; // Radius of the earth
+        final int R = 6371; // Erdradius
 
         double latDistance = Math.toRadians(lat2 - lat1);
-        double lonDistance = Math.toRadians(lon2 - lon1);
+        double longDistance = Math.toRadians(long2 - long1);
         double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+                * Math.sin(longDistance / 2) * Math.sin(longDistance / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double distance = R * c * 1000; // convert to meters
+        double distance = R * c * 1000; // in Meter
 
-        double height = el1 - el2;
-
-        distance = Math.pow(distance, 2) + Math.pow(height, 2);
+        distance = Math.pow(distance, 2);
 
         return Math.sqrt(distance);
     }
@@ -205,6 +206,7 @@ public class MapActivity extends AppCompatActivity {
                         //.title("Dein Tipp:") //ist eigentlich überflüssig
                         //.snippet("Zentrum")   //das ist ein kleines Infofeld darunter
                 );
+                markerPos=marker.getPosition();
 
 
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
