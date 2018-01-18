@@ -1,3 +1,8 @@
+/**
+ * class Highscore_Activity
+ * new intent to see and share the highscore
+ */
+
 package de.gidf.woliegtwas;
 
 import android.content.Intent;
@@ -16,13 +21,11 @@ import java.util.List;
 
 public class Highscore_Activity extends AppCompatActivity {
 
-    //shared preferences
-    private SharedPreferences highPrefs;
-
     //ui elements
     private TextView scoreView;
 
-    public static final String HIGH_PREFS = "ArithmeticFile";
+    //shared preferences
+    private SharedPreferences highPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,29 +35,42 @@ public class Highscore_Activity extends AppCompatActivity {
         //get text view
         scoreView = (TextView) findViewById(R.id.textHighList);
         //initiate shared prefs
-        highPrefs = getSharedPreferences(HIGH_PREFS, 0);
+        highPrefs = getSharedPreferences(PopUpHighscore.HIGH_PREFS, 0);
         //get scores
         String[] savedScores = highPrefs.getString("highscore", "no scores").split("\\|");
         //build string
         StringBuilder scoreBuild = new StringBuilder("");
-        for(String score : savedScores){
+        for (String score : savedScores) {
             scoreBuild.append(score + "\n");
         }
         //display scores
         scoreView.setText(scoreBuild.toString());
     }
 
-    /*
-    go back to main-page
+    /**
+     * ###############
+     * # new methods #
+     * ###############
      */
-    public void onClickBackToMain(View view){
+
+    /**
+     * ###################
+     * # onClick-methods #
+     * ###################
+     */
+
+    /**
+     * go back to main-page
+     */
+    public void onClickBackToMain(View view) {
         startActivity(
                 new Intent(this, MainActivity.class));
     }
 
-    /*
-    share the scores
+    /**
+     * share the scores
      */
+
     /*
     To-Do: Body und Sub durch Highscore ersetzen
      */

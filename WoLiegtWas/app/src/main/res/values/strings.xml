@@ -7,4 +7,5 @@
     <string name="button_Play">Play!</string>
     <string name="button_Help">Help!</string>
     <string name="button_HighScore">High Score</string>
+    <string name="checkbox_BackGround_Music">Music Off</string>
 </resources>
