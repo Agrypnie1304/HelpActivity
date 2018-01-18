@@ -34,24 +34,6 @@ public class MapActivity extends AppCompatActivity {
     int punkte;
     LatLng markerPos;
 
-
-    //Stadt Berlin = new Stadt("Berlin", new LatLng(52.520007,13.404954));
-    //Stadt Bremen = new Stadt("Bremen", new LatLng(53.0792962, 8.8016937));
-    //Stadt Dresden = new Stadt("Dresden", new LatLng(51.0504088, 13.7372621));
-    //Stadt Duesseldorf = new Stadt("Düsseldorf", new LatLng(51.2277411, 6.7734556));
-    //Stadt Erfurt = new Stadt("Erfurt", new LatLng(50.9847679,11.0298799));
-    //Stadt Hamburg = new Stadt("Hamburg", new LatLng(53.551085,9.993682));
-    //Stadt Hannover = new Stadt("Hannover", new LatLng(52.3758916,9.7320104));
-    //Stadt Kiel = new Stadt("Kiel", new LatLng(54.3232927,10.1227652));
-    //Stadt Magdeburg = new Stadt("Magdeburg", new LatLng(52.1205333,11.6276237));
-    //Stadt Mainz = new Stadt("Mainz", new LatLng(49.9928617,8.2472526));
-    //Stadt Muenchen = new Stadt("München", new LatLng(48.135125, 11.581981));
-    //Stadt Potsdam = new Stadt("Potsdam", new LatLng(52.390569,13.064473));
-    //Stadt Saarbruecken = new Stadt("Saarbrücken", new LatLng(49.2401572,6.9969327));
-    //Stadt Schwerin = new Stadt("Schwerin", new LatLng(53.6355022,11.4012499));
-    //Stadt Stuttgard = new Stadt("Stuttgard", new LatLng(48.775846,9.182932));
-    //Stadt Wiesbaden = new Stadt("Wiesbaden", new LatLng(50.0782184, 8.2397608));
-
     Stadt Berlin = new Stadt("Berlin",52.520007,13.404954);
     Stadt Bremen = new Stadt("Bremen",53.0792962, 8.8016937);
     Stadt Dresden = new Stadt("Dresden",51.0504088, 13.7372621);
