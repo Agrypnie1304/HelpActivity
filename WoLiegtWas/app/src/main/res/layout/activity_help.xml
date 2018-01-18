@@ -3,8 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="de.gidf.woliegtwas.HelpActivity">
+    android:layout_height="wrap_content"
+    tools:context="de.gidf.woliegtwas.MainActivity"
+    android:background="@drawable/fragezeichen_android"
+    android:layout_marginTop="64dp"
+    >
 
     <TextView
         android:id="@+id/textView"
@@ -36,11 +39,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:background="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/fragezeichen_android"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
 </android.support.constraint.ConstraintLayout>
