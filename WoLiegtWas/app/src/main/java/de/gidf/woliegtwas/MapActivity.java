@@ -87,9 +87,10 @@ public class MapActivity extends AppCompatActivity {
 
             button.setText("weiter");
 
+            ((TextView)findViewById(R.id.check)).setText("Koordinaten:"+ markerPos.getLatitude()+ " " + markerPos.getLongitude()+ "Stadt: " + stadtListRandom[l].name + " Koords " + stadtListRandom[l].koordinaten.getLatitude()+" " + stadtListRandom[l].koordinaten.getLongitude() );
 
             punktausgabe = berechnePunkte(stadtListRandom[l].koordinaten);
-            ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe +"Koo" + markerPos.getLatitude());
+            ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe);
             l=l+1;
 
         }else {
@@ -206,7 +207,7 @@ public class MapActivity extends AppCompatActivity {
                         //.title("Dein Tipp:") //ist eigentlich überflüssig
                         //.snippet("Zentrum")   //das ist ein kleines Infofeld darunter
                 );
-                markerPos=marker.getPosition();
+
 
 
                 mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
@@ -219,6 +220,7 @@ public class MapActivity extends AppCompatActivity {
                         //Zeit in ms also 2000 = 2s
                         markerAnimator.setDuration(500);
                         markerAnimator.start();
+                        markerPos=marker.getPosition();
                     }
                 });
 
