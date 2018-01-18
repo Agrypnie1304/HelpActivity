@@ -21,24 +21,17 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import java.util.Random;
 
-
 public class MapActivity extends AppCompatActivity {
 
     private MapView mapView;
 
     int i =1;
     int j =2;
-    int k=1, l,m;
-    String testString;
+    int k=1, l=0, m=0;
     double distance;
     int punktausgabe;
     int punkte;
-    int stadtAnzahl =16;
 
-    Random rand = new Random();
-    int n;
-    Stadt[] stadtList = new Stadt[stadtAnzahl -1];
-    Stadt[] stadtListRandom = new Stadt[stadtAnzahl-1];
 
     Stadt Berlin = new Stadt("Berlin", new LatLng(52.520007,13.404954));
     Stadt Bremen = new Stadt("Bremen", new LatLng(53.0792962, 8.8016937));
@@ -57,6 +50,23 @@ public class MapActivity extends AppCompatActivity {
     Stadt Stuttgard = new Stadt("Stuttgard", new LatLng(48.775846,9.182932));
     Stadt Wiesbaden = new Stadt("Wiesbaden", new LatLng(50.0782184, 8.2397608));
 
+    Stadt[] stadtListRandom = new Stadt[]{
+                    Berlin,
+                    Bremen,
+                    Dresden,
+                    Duesseldorf,
+                    Erfurt,
+                    Hamburg,
+                    Hannover,
+                    Kiel,
+                    Magdeburg,
+                    Mainz,
+                    Muenchen,
+                    Potsdam,
+                    Saarbruecken,
+                    Schwerin,
+                    Stuttgard,
+                    Wiesbaden};
 
 
     public void confirm (View view){
@@ -64,7 +74,10 @@ public class MapActivity extends AppCompatActivity {
         Button button = findViewById(R.id.confirm);
 
         if (k == 1 && j%2!=0) { //wenn Start gedrückt wird, soll erste Stadt kommen
-            ((TextView)findViewById(R.id.stadt)).setText(""+ stadtList[j-3].name);
+
+            shuffleArray(stadtListRandom);
+
+            ((TextView)findViewById(R.id.stadt)).setText(""+ stadtListRandom[l].name);
             k=k+1;
             button.setText("bestätige");
 
@@ -72,15 +85,16 @@ public class MapActivity extends AppCompatActivity {
 
             button.setText("weiter");
 
-            punktausgabe = berechnePunkte(stadtList[j-3].koordinaten);
-            ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe);
 
+            punktausgabe = berechnePunkte(stadtListRandom[l].koordinaten);
+            ((TextView) findViewById(R.id.score)).setText("Score: " + punktausgabe);
+            l=l+1;
 
         }else {
 
             button.setText("bestätige");
 
-            ((TextView)findViewById(R.id.stadt)).setText("" + stadtList[j-3].name);
+            ((TextView)findViewById(R.id.stadt)).setText("" + stadtListRandom[l].name);
 
             //wenn 10 mal weiter gedrückt wurde, soll in die Highscore gegangen werden:
             if (i == 10) {
@@ -97,7 +111,7 @@ public class MapActivity extends AppCompatActivity {
 
         //wenn 10 mal confirm gedrückt wurde, soll das passieren:
 
-        if (j == 10) {
+        if (l == 10) {
 
             Intent goToHighscore = new Intent(this, Highscore_Activity.class);
             goToHighscore.putExtra(getPackageName(), punkte); //hier werden punkte an highscore übergeben
@@ -111,7 +125,12 @@ public class MapActivity extends AppCompatActivity {
 
     private int berechnePunkte(LatLng koordinaten){
 
+
         double wert = 10000;
+        double lat1 = koordinaten.getLatitude();
+        double long1= koordinaten.getLongitude();
+        //double lat2 = tipp.getLatitude();
+
         distance = wert/1000; //Distanz in km
 
         if (distance>200){
@@ -130,32 +149,42 @@ public class MapActivity extends AppCompatActivity {
         return punkte;
     };
 
+    public static double distance(double lat1, double lat2, double lon1,
+                                  double lon2, double el1, double el2) {
+
+        final int R = 6371; // Radius of the earth
+
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = R * c * 1000; // convert to meters
+
+        double height = el1 - el2;
+
+        distance = Math.pow(distance, 2) + Math.pow(height, 2);
+
+        return Math.sqrt(distance);
+    }
+
+    private void shuffleArray (Stadt [] ar){ //Fisher-Yates shuffle
+        Random rand = new Random();
+        for (int i = ar.length - 1; i > 0; i--)
+        {
+            int index = rand.nextInt(i + 1);
+            Stadt a = ar[index];
+            ar[index] = ar[i];
+            ar[i] = a;
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//FEHLER!!!!!!
-        stadtList[0] = Berlin;
-        stadtList[1] = Bremen;
-        stadtList[2] = Dresden;
-        stadtList[3] = Duesseldorf;
-        stadtList[4] = Erfurt;
-        stadtList[5] = Hamburg;
-        stadtList[6] = Hannover;
-        stadtList[7] = Kiel;
-        stadtList[8] = Magdeburg;
-        stadtList[9] = Mainz;
-        stadtList[10] = Muenchen;
-        stadtList[11] = Potsdam;
-        stadtList[12] = Saarbruecken;
-        stadtList[13] = Schwerin;
-        stadtList[14] = Stuttgard;
-        stadtList[15] = Wiesbaden;
 
-        for (l=0; l<= stadtAnzahl-1; l++){ //erstelle eine random gemixte neue Liste, welche nacheinander abgefragt werden kann
-            this.n = l+rand.nextInt(stadtAnzahl-1-l);
-            stadtListRandom[l]=stadtList[this.n];
-        }
 
         // Ziel token
         Mapbox.getInstance(this, "pk.eyJ1Ijoic3lubyIsImEiOiJjamIyN2hjMDYxZ2NwMzNuMjVtMnM2cjg2In0.kEgKpYjF3FA5sdfTRDMw0A");
@@ -193,7 +222,6 @@ public class MapActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     @Override
